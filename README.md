@@ -13,7 +13,8 @@
 - O organizador deve poder cadastrar um novo evento;
 - O organizador deve poder visualizar dados de um evento;
 - O organizador deve poder visualizar a lista de participantes;
-1. O participante deve poder se inscrever em um evento;
+- 
+- O participante deve poder se inscrever em um evento;
 - O participante deve poder visualizar seu crachá de inscrição;
 - O participante deve poder realizar check-in no evento;
 
