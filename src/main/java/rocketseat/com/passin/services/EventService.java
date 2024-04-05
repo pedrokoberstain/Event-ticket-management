@@ -8,7 +8,6 @@ import rocketseat.com.passin.domain.event.exceptions.EventNotFoundException;
 import rocketseat.com.passin.dto.event.EventIdDTO;
 import rocketseat.com.passin.dto.event.EventRequestDTO;
 import rocketseat.com.passin.dto.event.EventResponseDTO;
-import rocketseat.com.passin.repositories.AttendeeRepository;
 import rocketseat.com.passin.repositories.EventRepository;
 
 import java.text.Normalizer;
@@ -18,15 +17,15 @@ import java.util.List;
 @RequiredArgsConstructor
 public class EventService {
     private final EventRepository eventRepository;
-    private final AttendeeRepository attendeeRepository;
+    private final AttendeeService attendeeService;
 
-    public EventResponseDTO getEventDetail(String eventId){
+    public EventResponseDTO getEventDetail(String eventId) {
         Event event = this.eventRepository.findById(eventId).orElseThrow(() -> new EventNotFoundException("Event not found with ID:" + eventId));
-        List<Attendee> attendeeList = this.attendeeRepository.findByEventId(eventId);
+        List<Attendee> attendeeList = this.attendeeService.getAllAttendeesFromEvents(eventId);
         return new EventResponseDTO(event, attendeeList.size());
     }
 
-    public EventIdDTO createEvent(EventRequestDTO eventDTO){
+    public EventIdDTO createEvent(EventRequestDTO eventDTO) {
         Event newEvent = new Event();
         newEvent.setTitle(eventDTO.title());
         newEvent.setDetails(eventDTO.details());
@@ -37,7 +36,7 @@ public class EventService {
         return new EventIdDTO(newEvent.getId());
     }
 
-    private String createSlug(String text){
+    private String createSlug(String text) {
         String normalized = Normalizer.normalize(text, Normalizer.Form.NFD);
         return normalized.replaceAll("[\\p{InCOMBINING_DIACRITICAL_MARKS}]", "")
                 .replaceAll("[^\\w\\s]", "")
