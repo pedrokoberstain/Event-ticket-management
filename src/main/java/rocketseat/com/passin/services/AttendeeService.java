@@ -30,7 +30,7 @@ public class AttendeeService {
 
         List<AttendeeDetails> attendeeDetailsList = attendeeList.stream().map(attendee -> {
             Optional<CheckIn> checkIn = this.checkInRepository.findByAttendeeId(attendee.getId());
-            LocalDateTime checkedInAt = checkIn.<LocalDateTime>map(CheckIn::getCreateAt).orElse(null);
+            LocalDateTime checkedInAt = checkIn.<LocalDateTime>map(CheckIn::getCreatedAt).orElse(null);
             return new AttendeeDetails(attendee.getId(), attendee.getName(), attendee.getEmail(), attendee.getCreatedAt(), checkedInAt);
         }).toList();
         return new AttendeesListResponseDTO(attendeeDetailsList);
