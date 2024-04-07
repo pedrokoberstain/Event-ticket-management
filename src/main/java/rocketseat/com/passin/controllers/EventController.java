@@ -7,7 +7,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import rocketseat.com.passin.dto.event.EventIdDTO;
 import rocketseat.com.passin.dto.event.EventRequestDTO;
 import rocketseat.com.passin.dto.event.EventResponseDTO;
-import rocketseat.com.passin.dto.event.attendee.AttendeesListResponseDTO;
+import rocketseat.com.passin.dto.attendee.AttendeesListResponseDTO;
 import rocketseat.com.passin.services.AttendeeService;
 import rocketseat.com.passin.services.EventService;
 
