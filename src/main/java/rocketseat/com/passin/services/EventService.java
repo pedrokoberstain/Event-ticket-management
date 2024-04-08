@@ -25,7 +25,7 @@ public class EventService {
 
     public EventResponseDTO getEventDetail(String eventId) {
         Event event = this.getEventById(eventId);
-        List<Attendee> attendeeList = this.attendeeService.getAllAttendeesFromEvents(eventId);
+        List<Attendee> attendeeList = this.attendeeService.getAllAttendeesFromEvent(eventId);
         return new EventResponseDTO(event, attendeeList.size());
     }
 
@@ -44,7 +44,7 @@ public class EventService {
         this.attendeeService.verifyAttendeeSubscription(attendeeRequestDTO.email(), eventId);
 
         Event event = this.getEventById(eventId);
-        List<Attendee> attendeeList = this.attendeeService.getAllAttendeesFromEvents(eventId);
+        List<Attendee> attendeeList = this.attendeeService.getAllAttendeesFromEvent(eventId);
 
         if (event.getMaximumAttendees() <= attendeeList.size()) throw new EventFullException("Event is full");
 
