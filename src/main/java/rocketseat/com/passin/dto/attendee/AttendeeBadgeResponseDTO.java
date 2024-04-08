@@ -1,5 +1,5 @@
 package rocketseat.com.passin.dto.attendee;
 
-public record AttendeeBadgeResponseDTO(AttendeeBadgeDTO badge) {
+public record AttendeeBadgeResponseDTO(BadgeDTO badge) {
 
 }
