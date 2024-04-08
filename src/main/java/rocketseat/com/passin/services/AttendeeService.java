@@ -42,7 +42,7 @@ public class AttendeeService {
     }
 
     public void verifyAttendeeSubscription(String email, String eventId) {
-        Optional<Attendee> isAttendeeRegistered = this.attendeeRepository.findyByEventIdAndEmail(eventId, email);
+        Optional<Attendee> isAttendeeRegistered = this.attendeeRepository.findByEventIdAndEmail(eventId, email);
         if (isAttendeeRegistered.isPresent()) {
             throw new AttendeeAlreadyExistException("Attendee already registered");
         }
